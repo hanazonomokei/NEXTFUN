@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXTFUNホームページ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* レイアウト調整 */
+        .exhibition-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 中央揃え */
+            text-align: center; /* テキストも中央揃え */
+            margin-bottom: 30px; /* 余白 */
+        }
+
+        .gallery-column {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .author-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            margin-bottom: 30px;
+            align-items: flex-start; /* 画像を上揃え */
+        }
+
+        .author-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .gallery-item {
+            text-align: center;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* 画像を左揃え */
+            justify-content: flex-start;
+            height: 100%;
+            max-width: 200px; /* サムネイルの最大幅を設定 */
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px; /* 高さを統一 */
+            object-fit: contain; /* 画像が歪まないようにする */
+            display: block;
+            margin-bottom: 10px; /* サムネの下の余白を追加 */
+        }
+
+        .gallery-item p {
+            margin-top: 10px;
+        }
+
+        /* モーダルウィンドウのスタイル */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* 背景を薄暗く */
+            justify-content: center; /* 中央揃え */
+            align-items: center; /* 垂直中央揃え */
+        }
+
+        .modal img {
+            max-width: 90%; /* 最大幅を90%に */
+            max-height: 80%; /* 最大高さを80%に */
+            object-fit: contain; /* 画像の歪みを防ぐ */
+        }
+
+        .modal .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <div class="logo">
+            <h1>NEXTFUN作品展示会</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#exhibitions">展示会情報</a></li>
+                <li><a href="#contact">NEXTFUN展示会準備委員会　連絡先</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- メインセクション -->
+    <main>
+        <section id="exhibitions" class="section">
+            <h2>展示会情報</h2>
+            <div class="exhibition-box">
+                <p>次回展示会は2025年12月に開催予定です。詳細は後日お知らせします。</p>
+                <p><a href="#first-exhibition">第1回NEXTFUN展示会</a></p>
+                <br>
+                <p><a href="#second-exhibition">第2回NEXTFUN展示会</a></p>
+            </div>
+        </section>
+
+        <section id="first-exhibition" class="section">
+            <h3>第1回NEXTFUN展示会</h3>
+            <p>開催日: 2023年9月16日</p>
+        </section>
+
+        <section id="second-exhibition" class="section">
+            <h3>第2回NEXTFUN展示会</h3>
+            <p>開催日: 2024年11月10日</p>
+            <p>場所: 吉祥寺 永谷2</p>
+            <p>展示内容: スケール模型作品を中心に展示</p>
+
+            <div class="exhibition-box">
+                <div class="author-section">
+                    <h3 class="author-name">田中の作品</h3>
+                    <div class="gallery-item">
+                        <img src="images/tana101.jpg" alt="メッサーシュミット" onclick="openModal(this.src)">
+                        <p>メッサーシュミット</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/tana102.jpg" alt="スピットファイヤ" onclick="openModal(this.src)">
+                        <p>スピットファイヤ</p>
+                    </div>
+                </div>
+
+                <div class="author-section">
+                    <h3 class="author-name">鶴岡の作品</h3>
+                    <div class="gallery-item">
+                        <img src="images/turu101.jpg" alt="クレーン" onclick="openModal(this.src)">
+                        <p>クレーン</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/turu102.jpg" alt="スカニア" onclick="openModal(this.src)">
+                        <p>スカニア</p>
+                    </div>
+                </div>
+
+                <div class="author-section">
+                    <h3 class="author-name">花園模型の作品</h3>
+                    <div class="gallery-item">
+                        <img src="images/hana101.jpg" alt="YAMAHA" onclick="openModal(this.src)">
+                        <p>YAMAHA</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/hana102.jpg" alt="SUZUKI" onclick="openModal(this.src)">
+                        <p>SUZUKI</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="third-exhibition" class="section">
+            <h3>第3回NEXTFUN展示会</h3>
+            <p>開催は、2025年12月に開催予定</p>
+            <p>詳細は後日お知らせします。</p>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>NEXTFUN展示会準備委員会　連絡先</h2>
+            <p>お問い合わせは以下のメールアドレスまでお願いします。</p>
+            <p>Email: info@modelgallery.com</p>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer>
+        <p>&copy; NEXTFUN展示会準備委員会</p>
+    </footer>
+
+    <!-- モーダルウィンドウ -->
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modal-image" src="" alt="拡大画像">
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-image');
+            modal.style.display = 'flex'; /* displayをflexに変更 */
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
